@@ -41,6 +41,10 @@ class Sprite {
     } else {
       this.y = 450;
     }
+    if(this.y < 400){
+this.y += 450;
+      this.x += this.xVelocity;
+    }
   }
 }
 let obstacles, newObs, bg, sprite;
