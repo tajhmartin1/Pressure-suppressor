@@ -5,6 +5,8 @@ class Obstacle {
     this.w = random(30, 60);
     this.h = random(100, 200);
     this.speed = 4;
+  this.yVelocity = 2
+    this.xVelocity = 2
   }
   move() {
     this.x -= this.speed;
@@ -33,7 +35,8 @@ class Sprite{
   }
   keyPressed(){
     if(keyCode === 32){
-      this.y += 100
+      this.y -=  this.yVelocity
+      this.x += this.xVelocity
     }else{
       this.y = 450
     }
