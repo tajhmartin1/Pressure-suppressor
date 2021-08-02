@@ -31,7 +31,13 @@ class Sprite{
   display(){
     ellipse(this.x, this.y, this.d)
   }
-  
+  keyPressed(){
+    if(keyCode === 32){
+      this.y += 100
+    }else{
+      this.y = 450
+    }
+  }
 }
 let obstacles, newObs, bg, sprite;
 function setup() {
@@ -59,5 +65,6 @@ function draw() {
    obstacle.h = random(100, 200);
   }
   sprite.display()
+  sprite.keyPressed()
   
 }
