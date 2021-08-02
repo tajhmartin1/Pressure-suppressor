@@ -5,14 +5,12 @@ class Obstacle {
     this.w = random(30, 60);
     this.h = random(100, 200);
     this.speed = 4;
-  this.yVelocity = 2
-    this.xVelocity = 2
+    
   }
   move() {
     this.x -= this.speed;
     rect(this.x, this.y, this.w, this.h);
     // rect(this.x+250, this.y, this.w, this.h);
-
   }
   // createNew() {
   //   this.x = 400;
@@ -24,30 +22,35 @@ class Obstacle {
   //   // rect(this.x, this.y, this.w, this.h);
   // }
 }
-class Sprite{
-  constructor(x,y,d){
-    this.x = 20
-    this.y = 450
-    this.d = 40
+class Sprite {
+  constructor(x, y, d) {
+    this.x = 20;
+    this.y = 450;
+    this.d = 40;
+    this.yVelocity = 2;
+    this.xVelocity = 2;
   }
-  display(){
-    ellipse(this.x, this.y, this.d)
+  display() {
+    ellipse(this.x, this.y, this.d);
   }
-  keyPressed(){
-    if(keyCode === 32){
-      this.y -=  this.yVelocity
-      this.x += this.xVelocity
-    }else{
-      this.y = 450
+  keyPressed() {
+    if (keyCode === 32) {
+      this.y -= this.yVelocity;
+      this.x += this.xVelocity;
+      console.log(this.y, this.x)
+    } else {
+      this.y = 450;
     }
   }
 }
 let obstacles, newObs, bg, sprite;
 function setup() {
   createCanvas(500, 500);
-  bg = loadImage("https://cdn.glitch.com/adc8477f-4903-4d87-8f47-16db8bf53b37%2FClassroom-Management-for-an-Effective-Learning-Environment-scaled.jpeg?v=1627925115657")
+  bg = loadImage(
+    "https://cdn.glitch.com/adc8477f-4903-4d87-8f47-16db8bf53b37%2FClassroom-Management-for-an-Effective-Learning-Environment-scaled.jpeg?v=1627925115657"
+  );
   obstacle = new Obstacle();
-  sprite = new Sprite()
+  sprite = new Sprite();
 
   //   obstacle = [];
 
@@ -61,13 +64,12 @@ function draw() {
   //   // const dot = dots[i];
   obstacle.move();
   if (obstacle.x < 0) {
-        this.y = random(400, 470);
+    this.y = random(400, 470);
 
-    obstacle.x = random(200,500)
+    obstacle.x = random(200, 500);
     obstacle.w = random(30, 60);
-   obstacle.h = random(100, 200);
+    obstacle.h = random(100, 200);
   }
-  sprite.display()
-  sprite.keyPressed()
-  
+  sprite.display();
+  sprite.keyPressed();
 }
