@@ -27,8 +27,9 @@ class Sprite {
     this.x = 20;
     this.y = 450;
     this.d = 40;
-    this.yVelocity = 2;
+    this.yVelocity = 2
     this.xVelocity = 2;
+    this.jump = true
   }
   display() {
     ellipse(this.x, this.y, this.d);
