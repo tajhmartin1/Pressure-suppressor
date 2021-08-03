@@ -84,8 +84,8 @@ function collide(){
 }
 
 function checkCollisions() {
-  hit = collideRectRect(obstacle.x, obstacle.x, 40, 30, player.x, play.y, 20);
-
+  hit = collideRectRect(obstacle.x, obstacle.y, obstacle.w, obstacle.h, player.x, player.y, 50,50);
+  console.log(hit)
   if (hit ) {
     hits+=1
     
