@@ -5,7 +5,6 @@ class Obstacle {
     this.w = random(30, 60);
     this.h = random(100, 200);
     this.speed = 4;
-    
   }
   move() {
     this.x -= this.speed;
@@ -27,26 +26,24 @@ class Sprite {
     this.x = 20;
     this.y = 450;
     this.d = 40;
-    this.yVelocity = 2
+    this.yVelocity = -2;
     this.xVelocity = 2;
-    this.jump = true
+    this.jump = true;
   }
   display() {
     ellipse(this.x, this.y, this.d);
   }
+  jump() {
+    this.y += this.yVelocity;
+  }
   keyPressed() {
     if (keyCode === 32) {
-      this.y -= this.yVelocity;
-      this.x += this.xVelocity;
-      console.log(this.y, this.x)
-    } else {
-      this.y = 450;
-    }
-    if(this.y < 400){
-this.y += 450;
-      this.x += this.xVelocity;
+      this.jump()
+      // this.x += this.xVelocity;
+      console.log(this.y);
     }
   }
+  
 }
 let obstacles, newObs, bg, sprite;
 function setup() {
