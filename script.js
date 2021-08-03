@@ -12,7 +12,7 @@ class Obstacle {
   move() {
     this.x -= this.speed;
     rect(this.x, this.y, this.w, this.h);
-    console.log(this.x)
+    //console.log(this.x)
     // rect(this.x+250, this.y, this.w, this.h);
   }
   // createNew() {
@@ -54,7 +54,8 @@ function draw() {
   player.collide(bottom);
   player.velocity.y += gravity;
   drawSprites();
-  text(`Hits: ${hits}`, 20,20)
+  checkCollisions()
+text(`Hits: ${hits}`, 20,20)
 }
 
 
@@ -84,7 +85,7 @@ function collide(){
 }
 
 function checkCollisions() {
-  hit = collideRectRect(obstacle.x, obstacle.y, obstacle.w, obstacle.h, player.x, player.y, 50,50);
+  hit = collideRectRect(obstacle.x, obstacle.y, obstacle.w, obstacle.h, 30, 450, 50,50);
   console.log(hit)
   if (hit ) {
     hits+=1
