@@ -1,5 +1,5 @@
 let player, bottom, obstacle, bg 
-let gravity = 0.05
+let gravity = 0.09
 let hop = -10;
 class Obstacle {
   constructor(x, y, w, h) {
@@ -39,7 +39,7 @@ function setup() {
 }
 
 function draw() {
-  background(bg);
+  background(bg);  
   // for (let obstacle of obstacles) {
   //   // const dot = dots[i];
   obstacle.move();
