@@ -27,8 +27,9 @@ class Sprite {
     this.y = 450;
     this.d = 40;
     this.player = createSprite(width / 2, height - 25, 50, 50);
+   this.gravity = 0.05;
 
-    this.yVelocity = -2;
+    this.player.velocity.y += this.gravity;
     this.xVelocity = 2;
     this.jump = true;
     this.hop = -5;
@@ -77,10 +78,10 @@ function draw() {
   if (obstacle.x < 0) {
     this.y = random(400, 470);
 
-    obstacle.x = 500
+    obstacle.x = 500;
     obstacle.w = random(30, 60);
     obstacle.h = random(100, 200);
   }
-  sprite.display();
-  sprite.keyPressed();
+  // sprite.display();
+  // sprite.keyPressed();
 }
