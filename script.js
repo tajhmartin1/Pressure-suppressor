@@ -1,4 +1,4 @@
-let player, bottom, obstacle, bg 
+let player, bottom, obstacle, bg ,hit
 let gravity = 0.09
 let hop = -10;
 class Obstacle {
@@ -77,4 +77,7 @@ function jump(sprite) {
 function move(sprite, speed, direction) {
   sprite.setSpeed(speed, direction)
 }   
+function collide(){
+  
+}
 
