@@ -1,4 +1,4 @@
-let player, bottom, obstacle, bg ,hit
+let player, bottom, obstacle, bg ,hit, hits
 let gravity = 0.09
 let hop = -10;
 class Obstacle {
@@ -29,6 +29,7 @@ function setup() {
   createCanvas(500, 500);
   player = createSprite(30,450, 50, 50);
   player.shapeColor = 0;
+  hits = 0
   player.friction = 0.01;
   player.maxSpeed = 2;
   obstacle = new Obstacle();
@@ -53,6 +54,7 @@ function draw() {
   player.collide(bottom);
   player.velocity.y += gravity;
   drawSprites();
+  text(`Hits: ${hits}`, 20,20)
 }
 
 
@@ -81,3 +83,13 @@ function collide(){
   
 }
 
+function checkCollisions() {
+  hit = collideRectRect(obstacle.x, obstacle.x, 40, 30, player.x, play.y, 20);
+
+  if (hit ) {
+    hits+=1
+    
+  }
+ 
+  
+}
