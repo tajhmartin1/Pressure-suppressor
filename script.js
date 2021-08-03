@@ -26,24 +26,33 @@ class Sprite {
     this.x = 20;
     this.y = 450;
     this.d = 40;
+      this.player = createSprite(width / 2, height - 25, 50, 50);
+
     this.yVelocity = -2;
     this.xVelocity = 2;
     this.jump = true;
+    this.hop = -5;
   }
   display() {
-    ellipse(this.x, this.y, this.d);
+  drawSprites() 
   }
-  jump() {
-    this.y += this.yVelocity;
-  }
+  // jump() {
+  //   this.y += this.yVelocity;
+  // }
   keyPressed() {
     if (keyCode === 32) {
-      this.jump()
+      jump(sprite)
       // this.x += this.xVelocity;
       console.log(this.y);
     }
   }
   
+ jump(sprite) {
+  sprite.velocity.y = hop;
+}
+   move(sprite, speed, direction) {
+  sprite.setSpeed(speed, direction)
+}
 }
 let obstacles, newObs, bg, sprite;
 function setup() {
