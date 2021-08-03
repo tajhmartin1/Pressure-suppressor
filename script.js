@@ -26,7 +26,7 @@ class Sprite {
     this.x = 20;
     this.y = 450;
     this.d = 40;
-      this.player = createSprite(width / 2, height - 25, 50, 50);
+    this.player = createSprite(width / 2, height - 25, 50, 50);
 
     this.yVelocity = -2;
     this.xVelocity = 2;
@@ -34,25 +34,25 @@ class Sprite {
     this.hop = -5;
   }
   display() {
-  drawSprites() 
+    drawSprites();
   }
   // jump() {
   //   this.y += this.yVelocity;
   // }
+
+  jump(sprite) {
+    this.sprite.velocity.y = this.hop;
+  }
+  move(sprite, speed, direction) {
+    this.sprite.setSpeed(this.speed, this.direction);
+  }
   keyPressed() {
     if (keyCode === 32) {
-      jump(sprite)
+      this.jump(this.player);
       // this.x += this.xVelocity;
       console.log(this.y);
     }
   }
-  
- jump(sprite) {
-  sprite.velocity.y = hop;
-}
-   move(sprite, speed, direction) {
-  sprite.setSpeed(speed, direction)
-}
 }
 let obstacles, newObs, bg, sprite;
 function setup() {
@@ -77,7 +77,7 @@ function draw() {
   if (obstacle.x < 0) {
     this.y = random(400, 470);
 
-    obstacle.x = random(200, 500);
+    obstacle.x = 500
     obstacle.w = random(30, 60);
     obstacle.h = random(100, 200);
   }
