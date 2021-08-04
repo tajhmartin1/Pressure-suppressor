@@ -1,6 +1,9 @@
-let player, bottom, obstacle, bg, hit, hits, rightSide, leftSide;
+let player, bottom, obstacle, bg, hit, hits, rightSide, leftSide, vol;
+var song, mic, background;
+
 let gravity = 0.09;
-let hop = -10;
+let yHop = -10;
+ley
 class Obstacle {
   constructor(x, y, w, h) {
     this.x = 400;
@@ -34,6 +37,7 @@ function setup() {
   
    leftSide = createSprite(0, height, 0, height);
   leftSide.immovable = true;
+
 }
 
 function draw() {
@@ -50,8 +54,7 @@ function draw() {
   player.collide(rightSide);
     player.collide(leftSide);
 
-  ellipse(100, 100, 200, vol * 4500);
-  console.log(vol*1000);
+ 
 
   player.velocity.y += gravity;
   drawSprites();
@@ -60,31 +63,37 @@ function draw() {
   if (player.x > width) {
     player.velocity.x = 40;
   }
+  moveSprite()
 }
 
 function moveSprite() {
-  if (keyCode === 32) {
+      var vol = mic.getLevel()*1000 ;
+  console.log(vol*1000);
+  if (vol > 50) {
     // optional spacebar jump
     jump(player);
     
-  } else if (keyCode === 40) {
-    //down
-    move(player, 2, 90);
-  } else if (keyCode === 38) {
-    // up/jump
-    move(player, 2, 270);
-  } else if (keyCode === 39) {
-    //right
-    move(player, 2, 0);
-  } else if (keyCode === 37) {
-    //left
-    move(player, 2, 180);
-  }
+  } 
+  //else if (keyCode === 40) {
+  //   //down
+  //   move(player, 2, 90);
+  // } else if (keyCode === 38) {
+  //   // up/jump
+  //   move(player, 2, 270);
+  // } else if (keyCode === 39) {
+  //   //right
+  //   move(player, 2, 0);
+  // } else if (keyCode === 37) {
+  //   //left
+  //   move(player, 2, 180);
+  // }
 }
 
 function jump(sprite) {
   sprite.velocity.y = hop;
      // move(player, 2, 0);
+    sprite.velocity.x = -hop;
+
 
 }
 
