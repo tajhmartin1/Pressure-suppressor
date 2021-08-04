@@ -1,4 +1,4 @@
-let player, bottom, obstacle, bg, hit, hits, rightSide, leftSide, vol;
+let player, bottom, obstacle, bg, hit, rightSide, leftSide, vol;
 let topOfCanvas
 var song, mic, background;
 
@@ -27,8 +27,8 @@ class Obstacle {
     this.image = loadImage("https://cdn.glitch.com/adc8477f-4903-4d87-8f47-16db8bf53b37%2Fadc8477f-4903-4d87-8f47-16db8bf53b37_New%20Piskel-1.png%20(4).png?v=1628102252590")  }
   move() {
     this.x -= this.speed;
-    image(this.image,this.x, 400,  200,80)
-    image(this.image2,this.x+200, 400, 150,90)
+    image(this.image,this.x, 400,  200,100)
+    image(this.image2,this.x+250, 400, 150,90)
 
   }
 }
@@ -67,7 +67,7 @@ function setup() {
 }
 
 function draw() {
-  background(200);
+  background(10,20,250);
   
   bgx = bgx - bgaccX;
   image(backgroundImage, bgx, bgy, bgw , bgh);
@@ -97,7 +97,6 @@ function draw() {
 
   player.velocity.y += gravity;
   drawSprites();
-  checkCollisions();
   text(`Hits: ${hits}`, 20, 20);
   if (player.x > width) {
     player.velocity.x = 40;
@@ -147,22 +146,6 @@ function move(sprite, speed, direction) {
 }
 function collide() {}
 
-function checkCollisions() {
-  hit = collideRectRect(
-    obstacle.x,
-    obstacle.y,
-    obstacle.w,
-    obstacle.h,
-    30,
-    450,
-    50,
-    50
-  );
-  console.log(hit);
-  if (hit) {
-    hits += 1;
-  }
-}
 
 
 
