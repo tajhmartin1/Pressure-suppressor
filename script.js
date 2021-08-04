@@ -3,7 +3,7 @@ var song, mic, background;
 
 let gravity = 0.09;
 let yHop = -10;
-ley
+let xHop = 5
 class Obstacle {
   constructor(x, y, w, h) {
     this.x = 400;
@@ -90,9 +90,9 @@ function moveSprite() {
 }
 
 function jump(sprite) {
-  sprite.velocity.y = hop;
+  sprite.velocity.y = yHop;
      // move(player, 2, 0);
-    sprite.velocity.x = -hop;
+    sprite.velocity.x = xHop;
 
 
 }
