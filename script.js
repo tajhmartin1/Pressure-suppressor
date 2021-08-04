@@ -49,7 +49,7 @@ function draw() {
   checkCollisions();
   text(`Hits: ${hits}`, 20, 20);
   if (player.x > width) {
-    player.x = 40;
+    player.velocity.x = 40;
   }
 }
 
