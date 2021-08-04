@@ -1,5 +1,5 @@
 let player, bottom, obstacle, bg, hit, hits, rightSide, leftSide, vol;
-let top
+let topOfCanvas
 var song, mic, background;
 
 let gravity = 0.09;
@@ -39,8 +39,8 @@ function setup() {
    leftSide = createSprite(0, height, 0, height);
   leftSide.immovable = true;
   
-  //  top = createSprite(0, 0, 0, 0);
-  // top.immovable = true;
+   topOfCanvas = createSprite(0, 0, 0, 0);
+  topOfCanvas.immovable = true;
 
 }
 
@@ -57,7 +57,7 @@ function draw() {
   player.collide(bottom);
   player.collide(rightSide);
     player.collide(leftSide);
-   // player.collide(top);
+   player.collide(topOfCanvas);
 
  
 
@@ -100,8 +100,8 @@ function jump(sprite) {
      // move(player, 2, 0);
     sprite.velocity.x = xHop;
 
-if(sprite.collide(rightSide) ){
-     sprite.velocity.y = yHop;
+if(sprite.collide(rightSide)){
+     // sprite.velocity.y = -yHop;
      // move(player, 2, 0);
     sprite.velocity.x = -xHop;
   }
