@@ -1,10 +1,10 @@
 let player, bottom, obstacle, bg, hit, rightSide, leftSide, vol;
-let topOfCanvas
+let topOfCanvas;
 var song, mic, background;
 
 let gravity = 0.09;
 let yHop = -10;
-let xHop = 5
+let xHop = 5;
 let bgx = 0;
 let bgy = 220;
 let bgw = 4000;
@@ -14,8 +14,6 @@ let bgaccY = 1;
 let time = 20;
 let backgroundImage;
 
-
-
 class Obstacle {
   constructor(x, y, w, h) {
     this.x = 400;
@@ -23,64 +21,67 @@ class Obstacle {
     this.w = random(30, 60);
     this.h = random(100, 200);
     this.speed = 4;
-    this.image2 = loadImage("https://cdn.glitch.com/adc8477f-4903-4d87-8f47-16db8bf53b37%2Fadc8477f-4903-4d87-8f47-16db8bf53b37_New%20Piskel-2.png%20(2).png?v=1628102020705")
-    this.image = loadImage("https://cdn.glitch.com/adc8477f-4903-4d87-8f47-16db8bf53b37%2Fadc8477f-4903-4d87-8f47-16db8bf53b37_New%20Piskel-1.png%20(4).png?v=1628102252590")  }
+    this.image2 = loadImage(
+      "https://cdn.glitch.com/adc8477f-4903-4d87-8f47-16db8bf53b37%2Fadc8477f-4903-4d87-8f47-16db8bf53b37_New%20Piskel-2.png%20(2).png?v=1628102020705"
+    );
+    this.image = loadImage(
+      "https://cdn.glitch.com/adc8477f-4903-4d87-8f47-16db8bf53b37%2Fadc8477f-4903-4d87-8f47-16db8bf53b37_New%20Piskel-1.png%20(4).png?v=1628102252590"
+    );
+  }
   move() {
     this.x -= this.speed;
-    image(this.image,this.x, 400,  200,100)
-    image(this.image2,this.x+250, 400, 150,90)
-
+    image(this.image, this.x, 400, 200, 100);
+    image(this.image2, this.x + 250, 400, 150, 90);
   }
 }
 function setup() {
   createCanvas(500, 500);
-  player = createSprite(30, 450, 50, 50);
+  player = createSprite(80, 450, 50, 50);
   player.shapeColor = 0;
   hits = 0;
-   mic = new p5.AudioIn();
+  mic = new p5.AudioIn();
   mic.start();
   player.friction = 0.01;
   player.maxSpeed = 2;
   obstacle = new Obstacle();
-  
-   backgroundImage = loadImage(
-   "https://cdn.glitch.com/adc8477f-4903-4d87-8f47-16db8bf53b37%2FNew%20Piskel-1.png%20(2).png?v=1628100564369"
- );
-  
-  
- bg = loadImage(
+
+  backgroundImage = loadImage(
+    "https://cdn.glitch.com/adc8477f-4903-4d87-8f47-16db8bf53b37%2FNew%20Piskel-1.png%20(2).png?v=1628100564369"
+  );
+
+  bg = loadImage(
     "https://cdn.glitch.com/7d4765b5-4f33-4283-ab4e-70b1f56ec781%2FClassroom-Management-for-an-Effective-Learning-Environment-scaled.jpeg?v=1628013020137"
   );
-  
-  
+
   bottom = createSprite(width / 2, height + 5, width, 10);
   bottom.immovable = true;
   rightSide = createSprite(width, height, 0, height);
   rightSide.immovable = true;
-  
-   leftSide = createSprite(0, height, 0, height);
-  leftSide.immovable = true;
-  
-   topOfCanvas = createSprite(0, 0, 0, 0);
-  topOfCanvas.immovable = true;
 
+  leftSide = createSprite(0, height, 0, height);
+  leftSide.immovable = true;
+
+  topOfCanvas = createSprite(0, 0, 0, 0);
+  topOfCanvas.immovable = true;
 }
 
 function draw() {
-  background(10,20,250);
-  
+  background(180, 210, 255);
+  player.addAnimation(
+    "run",
+    "https://cdn.glitch.com/adc8477f-4903-4d87-8f47-16db8bf53b37%2FNew%20Piskel%20(1).gif?v=1628100776541"
+  );
   bgx = bgx - bgaccX;
-  image(backgroundImage, bgx, bgy, bgw , bgh);
-  
-  textSize(20)
-  text(time, 2 , 60);
-  
-  if( time > 0){
-    time -= .01;
-    
+  image(backgroundImage, bgx, bgy, bgw, bgh);
+
+  textSize(20);
+  text(time, 2, 60);
+
+  if (time > 0) {
+    time -= 0.01;
   }
-  
-   //for (let obstacle of obstacles) {
+
+  //for (let obstacle of obstacles) {
   //   // const dot = dots[i];
   obstacle.move();
   if (obstacle.x < 0) {
@@ -90,10 +91,8 @@ function draw() {
   }
   player.collide(bottom);
   player.collide(rightSide);
-    player.collide(leftSide);
-   player.collide(topOfCanvas);
-
- 
+  player.collide(leftSide);
+  player.collide(topOfCanvas);
 
   player.velocity.y += gravity;
   drawSprites();
@@ -101,19 +100,17 @@ function draw() {
   if (player.x > width) {
     player.velocity.x = 40;
   }
-  moveSprite()
+  moveSprite();
 }
 
-
 function moveSprite() {
-      var vol = mic.getLevel()*1000 ;
-  console.log(vol*1000);
+  var vol = mic.getLevel() * 1000;
+  console.log(vol * 1000);
   if (vol > 50) {
     // optional spacebar jump
     jump(player);
-    
-  } 
-  
+  }
+
   //else if (keyCode === 40) {
   //   //down
   //   move(player, 2, 90);
@@ -131,12 +128,12 @@ function moveSprite() {
 
 function jump(sprite) {
   sprite.velocity.y = yHop;
-     // move(player, 2, 0);
-    sprite.velocity.x = xHop;
+  // move(player, 2, 0);
+  sprite.velocity.x = xHop;
 
-if(sprite.collide(rightSide)){
-     // sprite.velocity.y = -yHop;
-     // move(player, 2, 0);
+  if (sprite.collide(rightSide)) {
+    // sprite.velocity.y = -yHop;
+    // move(player, 2, 0);
     sprite.velocity.x = -xHop;
   }
 }
@@ -146,13 +143,6 @@ function move(sprite, speed, direction) {
 }
 function collide() {}
 
-
-
-
 // function preload() {
 //   song = loadSound();
 // }
-
-
-
-
