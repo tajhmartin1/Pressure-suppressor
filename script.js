@@ -19,6 +19,8 @@ function setup() {
   player = createSprite(30, 450, 50, 50);
   player.shapeColor = 0;
   hits = 0;
+   mic = new p5.AudioIn();
+  mic.start();
   player.friction = 0.01;
   player.maxSpeed = 2;
   obstacle = new Obstacle();
@@ -48,6 +50,8 @@ function draw() {
   player.collide(rightSide);
     player.collide(leftSide);
 
+  ellipse(100, 100, 200, vol * 4500);
+  console.log(vol*1000);
 
   player.velocity.y += gravity;
   drawSprites();
@@ -58,7 +62,7 @@ function draw() {
   }
 }
 
-function keyPressed() {
+function moveSprite() {
   if (keyCode === 32) {
     // optional spacebar jump
     jump(player);
@@ -105,3 +109,13 @@ function checkCollisions() {
     hits += 1;
   }
 }
+
+
+
+// function preload() {
+//   song = loadSound();
+// }
+
+
+
+
