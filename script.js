@@ -74,6 +74,7 @@ function moveSprite() {
     jump(player);
     
   } 
+  
   //else if (keyCode === 40) {
   //   //down
   //   move(player, 2, 90);
@@ -94,7 +95,11 @@ function jump(sprite) {
      // move(player, 2, 0);
     sprite.velocity.x = xHop;
 
-
+if(sprite.collide(leftSide)){
+     sprite.velocity.y = yHop;
+     // move(player, 2, 0);
+    sprite.velocity.x = -xHop;
+  }
 }
 
 function move(sprite, speed, direction) {
