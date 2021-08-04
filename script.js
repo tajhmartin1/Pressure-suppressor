@@ -5,8 +5,14 @@ var song, mic, background;
 let gravity = 0.09;
 let yHop = -10;
 let xHop = 5
+let bgx = 0;
+let bgy = 220;
+let bgw = 4000;
+let bgh = 400;
+let bgaccX = 1;
+let bgaccY = 1;
 
-let backgroundImage = 
+let backgroundImage;
 
 
 
@@ -21,7 +27,7 @@ class Obstacle {
   }
   move() {
     this.x -= this.speed;
-    image()
+    image(this.image,this.x, this.y, 80,80)
   }
 }
 function setup() {
@@ -34,9 +40,17 @@ function setup() {
   player.friction = 0.01;
   player.maxSpeed = 2;
   obstacle = new Obstacle();
-  bg = loadImage(
+  
+   backgroundImage = loadImage(
+   "https://cdn.glitch.com/adc8477f-4903-4d87-8f47-16db8bf53b37%2FNew%20Piskel-1.png%20(2).png?v=1628100564369"
+ );
+  
+  
+ bg = loadImage(
     "https://cdn.glitch.com/7d4765b5-4f33-4283-ab4e-70b1f56ec781%2FClassroom-Management-for-an-Effective-Learning-Environment-scaled.jpeg?v=1628013020137"
   );
+  
+  
   bottom = createSprite(width / 2, height + 5, width, 10);
   bottom.immovable = true;
   rightSide = createSprite(width, height, 0, height);
@@ -51,8 +65,16 @@ function setup() {
 }
 
 function draw() {
-  background(bg);
-  // for (let obstacle of obstacles) {
+  background(200);
+  
+  if (bgy + bgh >= 500|| bgy < 0){
+     bgaccY = -1 * bgaccY;
+  }
+  
+  image(backgroundImage, bgx, bgy, bgw , bgh);
+  
+  
+   //for (let obstacle of obstacles) {
   //   // const dot = dots[i];
   obstacle.move();
   if (obstacle.x < 0) {
@@ -76,6 +98,7 @@ function draw() {
   }
   moveSprite()
 }
+
 
 function moveSprite() {
       var vol = mic.getLevel()*1000 ;
