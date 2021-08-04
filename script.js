@@ -1,4 +1,4 @@
-let player, bottom, obstacle, bg, hit, hits, side;
+let player, bottom, obstacle, bg, hit, hits, rightSide, leftSide;
 let gravity = 0.09;
 let hop = -10;
 class Obstacle {
@@ -27,8 +27,11 @@ function setup() {
   );
   bottom = createSprite(width / 2, height + 5, width, 10);
   bottom.immovable = true;
-  side = createSprite(width, height, width, 1);
-  side.immovable = true;
+  rightSide = createSprite(width, height, 0, height);
+  rightSide.immovable = true;
+  
+   leftSide = createSprite(0, height, 0, height);
+  leftSide.immovable = true;
 }
 
 function draw() {
@@ -42,7 +45,9 @@ function draw() {
     obstacle.h = random(100, 200);
   }
   player.collide(bottom);
-  player.collide(side);
+  player.collide(rightSide);
+    player.collide(leftSide);
+
 
   player.velocity.y += gravity;
   drawSprites();
@@ -57,6 +62,7 @@ function keyPressed() {
   if (keyCode === 32) {
     // optional spacebar jump
     jump(player);
+    
   } else if (keyCode === 40) {
     //down
     move(player, 2, 90);
@@ -74,6 +80,8 @@ function keyPressed() {
 
 function jump(sprite) {
   sprite.velocity.y = hop;
+     // move(player, 2, 0);
+
 }
 
 function move(sprite, speed, direction) {
