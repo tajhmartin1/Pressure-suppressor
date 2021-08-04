@@ -5,6 +5,11 @@ var song, mic, background;
 let gravity = 0.09;
 let yHop = -10;
 let xHop = 5
+
+let backgroundImage = 
+
+
+
 class Obstacle {
   constructor(x, y, w, h) {
     this.x = 400;
@@ -12,10 +17,11 @@ class Obstacle {
     this.w = random(30, 60);
     this.h = random(100, 200);
     this.speed = 4;
+    this.image = loadImage("https://cdn.glitch.com/adc8477f-4903-4d87-8f47-16db8bf53b37%2FNew%20Piskel-1.png%20(4).png?v=1628100556625")
   }
   move() {
     this.x -= this.speed;
-    rect(this.x, this.y, this.w, this.h);
+    image()
   }
 }
 function setup() {
