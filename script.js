@@ -11,7 +11,7 @@ let bgw = 4000;
 let bgh = 400;
 let bgaccX = 1;
 let bgaccY = 1;
-
+let time = 20;
 let backgroundImage;
 
 
@@ -23,11 +23,13 @@ class Obstacle {
     this.w = random(30, 60);
     this.h = random(100, 200);
     this.speed = 4;
-    this.image = loadImage("https://cdn.glitch.com/adc8477f-4903-4d87-8f47-16db8bf53b37%2FNew%20Piskel-1.png%20(4).png?v=1628100556625")
-  }
+    this.image2 = loadImage("https://cdn.glitch.com/adc8477f-4903-4d87-8f47-16db8bf53b37%2Fadc8477f-4903-4d87-8f47-16db8bf53b37_New%20Piskel-2.png%20(2).png?v=1628102020705")
+    this.image = loadImage("https://cdn.glitch.com/adc8477f-4903-4d87-8f47-16db8bf53b37%2Fadc8477f-4903-4d87-8f47-16db8bf53b37_New%20Piskel-1.png%20(4).png?v=1628102252590")  }
   move() {
     this.x -= this.speed;
-    image(this.image,this.x, this.y, 80,80)
+    image(this.image,this.x, 400,  200,80)
+    image(this.image2,this.x+200, 400, 150,90)
+
   }
 }
 function setup() {
@@ -67,12 +69,16 @@ function setup() {
 function draw() {
   background(200);
   
-  if (bgy + bgh >= 500|| bgy < 0){
-     bgaccY = -1 * bgaccY;
-  }
-  
+  bgx = bgx - bgaccX;
   image(backgroundImage, bgx, bgy, bgw , bgh);
   
+  textSize(20)
+  text(time, 2 , 60);
+  
+  if( time > 0){
+    time -= .01;
+    
+  }
   
    //for (let obstacle of obstacles) {
   //   // const dot = dots[i];
