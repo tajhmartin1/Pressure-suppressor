@@ -1,4 +1,4 @@
-let player, bottom, obstacle, bg, hit, rightSide, leftSide, vol, smallBook;
+let player, bottom, obstacle, bg, hit, rightSide, leftSide, vol;
 let topOfCanvas, gif;
 var song, mic, background;
 
@@ -15,13 +15,12 @@ let time = 30;
 let backgroundImage;
 
 class Obstacle {
-  constructor(x, y, w, h, img) {
+  constructor(x, y, w, h) {
     this.x = 400;
-    this.y = y;
-    this.w = w;
-    this.h = h;
+    this.y = random(400, 470);
+    this.w = random(30, 60);
+    this.h = random(100, 200);
     this.speed = 4;
-    this.img = img
     this.image2 = loadImage(
       "https://cdn.glitch.com/adc8477f-4903-4d87-8f47-16db8bf53b37%2Fadc8477f-4903-4d87-8f47-16db8bf53b37_New%20Piskel-2.png%20(2).png?v=1628102020705"
     );
@@ -31,8 +30,8 @@ class Obstacle {
   }
   move() {
     this.x -= this.speed;
-    image(this.img, this.x, this.y, this.w, this.h);
-    // image(this.image2, this.x, 320, 150, 90);
+    image(this.image, this.x, 320, 200, 100);
+    image(this.image2, this.x + 250, 320, 150, 90);
   }
 }
 function preload() {
@@ -45,16 +44,15 @@ function preload() {
 
 function setup() {
   createCanvas(500, 500);
-  player = createSprite(80, 450, 100, 100);
+  player = createSprite(80, 400, 150, 150);
   player.shapeColor = 0;
   hits = 0;
-  smallBook = loadImage("https://cdn.glitch.com/adc8477f-4903-4d87-8f47-16db8bf53b37%2Fadc8477f-4903-4d87-8f47-16db8bf53b37_New%20Piskel-1.png%20(4).png?v=1628102252590")
   song.play();
   mic = new p5.AudioIn();
   mic.start();
   player.friction = 0.01;
   player.maxSpeed = 2;
-  obstacle = new Obstacle(400, 320,200,100, image(smallBook,20,20));
+  obstacle = new Obstacle();
 
   backgroundImage = loadImage(
     "https://cdn.glitch.com/adc8477f-4903-4d87-8f47-16db8bf53b37%2FNew%20Piskel-1.png%20(2).png?v=1628100564369"
@@ -64,9 +62,9 @@ function setup() {
     "https://cdn.glitch.com/7d4765b5-4f33-4283-ab4e-70b1f56ec781%2FClassroom-Management-for-an-Effective-Learning-Environment-scaled.jpeg?v=1628013020137"
   );
 
-  bottom = createSprite(500 / 2, height + 5, 500, 10);
+  bottom = createSprite(width / 2, height + 5, width, 10);
   bottom.immovable = true;
-  rightSide = createSprite(500, height, 0, height);
+  rightSide = createSprite(width, height, 0, height);
   rightSide.immovable = true;
 
   leftSide = createSprite(0, height, 0, height);
@@ -78,7 +76,7 @@ function setup() {
 
 function draw() {
   background(180, 210, 255);
-    gif.resize(100, 100);
+    gif.resize(150, 150);
 
   player.addImage("image", gif);
   bgx = bgx - bgaccX;
@@ -109,7 +107,7 @@ function draw() {
   player.velocity.y += gravity;
   drawSprites();
   text(`Hits: ${hits}`, 20, 20);
-  if (player.x > 500) {
+  if (player.x > width) {
     player.velocity.x = 40;
   }
   moveSprite();
@@ -118,24 +116,12 @@ function draw() {
 function moveSprite() {
   var vol = mic.getLevel() * 1000;
 //console.log(vol);
-  if (vol > 30) {
+  if (vol > 40) {
     // optional spacebar jump
     jump(player);
   }
 
-  //else if (keyCode === 40) {
-  //   //down
-  //   move(player, 2, 90);
-  // } else if (keyCode === 38) {
-  //   // up/jump
-  //   move(player, 2, 270);
-  // } else if (keyCode === 39) {
-  //   //right
-  //   move(player, 2, 0);
-  // } else if (keyCode === 37) {
-  //   //left
-  //   move(player, 2, 180);
-  // }
+  
 }
 
 function jump(sprite) {
@@ -146,11 +132,6 @@ function jump(sprite) {
     console.log(sprite.velocity.x)
 
 
-//   if (sprite.collide(rightSide)) {
-//     // sprite.velocity.y = -yHop;
-//     // move(player, 2, 0);
-//     sprite.velocity.x = -xHop;
-//   }
 }
 
 function move(sprite, speed, direction) {
