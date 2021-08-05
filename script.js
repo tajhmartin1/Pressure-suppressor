@@ -38,7 +38,10 @@ function preload() {
   gif = loadImage(
     "https://cdn.glitch.com/adc8477f-4903-4d87-8f47-16db8bf53b37%2FNew%20Piskel%20(1).gif?v=1628100776541"
   );
-  song = loadSound("https://cdn.glitch.com/9932e439-9de3-453d-989b-f4f396c9a943%2FMetre%20-%20Locus.mp3?v=1628099978842");
+  song = loadSound(
+    "https://cdn.glitch.com/9932e439-9de3-453d-989b-f4f396c9a943%2FMetre%20-%20Locus.mp3?v=1628099978842"
+  );
+    song.setVolume(0.09)
 
 }
 
@@ -76,7 +79,7 @@ function setup() {
 
 function draw() {
   background(180, 210, 255);
-    gif.resize(150, 150);
+  gif.resize(150, 150);
 
   player.addImage("image", gif);
   bgx = bgx - bgaccX;
@@ -115,23 +118,19 @@ function draw() {
 
 function moveSprite() {
   var vol = mic.getLevel() * 1000;
-//console.log(vol);
+  //console.log(vol);
   if (vol > 40) {
     // optional spacebar jump
     jump(player);
   }
-
-  
 }
 
 function jump(sprite) {
   sprite.velocity.y += yHop;
   //move(player, 2, 0);
-//  sprite.velocity.x = xHop;
-  console.log(sprite.velocity.y)
-    console.log(sprite.velocity.x)
-
-
+  //  sprite.velocity.x = xHop;
+  console.log(sprite.velocity.y);
+  console.log(sprite.velocity.x);
 }
 
 function move(sprite, speed, direction) {
