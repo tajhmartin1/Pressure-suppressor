@@ -1,5 +1,5 @@
 let player, bottom, obstacle, bg, hit, rightSide, leftSide, vol;
-let topOfCanvas;
+let topOfCanvas, gif;
 var song, mic, background;
 
 let gravity = 0.09;
@@ -11,7 +11,7 @@ let bgw = 4000;
 let bgh = 400;
 let bgaccX = 1;
 let bgaccY = 1;
-let time = 20;
+let time = 2;
 let backgroundImage;
 
 class Obstacle {
@@ -30,13 +30,17 @@ class Obstacle {
   }
   move() {
     this.x -= this.speed;
-    image(this.image, this.x, 400, 200, 100);
+    image(this.image, this.x, 350, 200, 100);
     image(this.image2, this.x + 250, 400, 150, 90);
   }
 }
+function preload() {
+  gif = loadImage("https://cdn.glitch.com/adc8477f-4903-4d87-8f47-16db8bf53b37%2FNew%20Piskel%20(1).gif?v=1628100776541")
+}
+
 function setup() {
   createCanvas(500, 500);
-  player = createSprite(80, 450, 50, 50);
+  player = createSprite(80, 300, 50, 50);
   player.shapeColor = 0;
   hits = 0;
   mic = new p5.AudioIn();
@@ -67,19 +71,19 @@ function setup() {
 
 function draw() {
   background(180, 210, 255);
-  player.addAnimation(
-    "run",
-    "https://cdn.glitch.com/adc8477f-4903-4d87-8f47-16db8bf53b37%2FNew%20Piskel%20(1).gif?v=1628100776541"
-  );
+  player.addImage("image", gif)
   bgx = bgx - bgaccX;
   image(backgroundImage, bgx, bgy, bgw, bgh);
 
   textSize(20);
   text(time, 2, 60);
 
-  if (time > 0) {
+  if (time != 0.0) {
     time -= 0.01;
   }
+ 
+    // image(gif, 40, 400 , 100, 100);
+
 
   //for (let obstacle of obstacles) {
   //   // const dot = dots[i];
@@ -143,6 +147,3 @@ function move(sprite, speed, direction) {
 }
 function collide() {}
 
-// function preload() {
-//   song = loadSound();
-// }
