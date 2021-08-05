@@ -112,8 +112,8 @@ function draw() {
 
 function moveSprite() {
   var vol = mic.getLevel() * 1000;
-  console.log(vol * 1000);
-  if (vol > 50) {
+//console.log(vol);
+  if (vol > 10) {
     // optional spacebar jump
     jump(player);
   }
@@ -134,16 +134,18 @@ function moveSprite() {
 }
 
 function jump(sprite) {
-  sprite.velocity.y = yHop;
-  // move(player, 2, 0);
+  sprite.velocity.y += yHop;
+  //move(player, 2, 0);
   sprite.velocity.x = xHop;
   console.log(sprite.velocity.y)
+    console.log(sprite.velocity.x)
 
-  if (sprite.collide(rightSide)) {
-    // sprite.velocity.y = -yHop;
-    // move(player, 2, 0);
-    sprite.velocity.x = -xHop;
-  }
+
+//   if (sprite.collide(rightSide)) {
+//     // sprite.velocity.y = -yHop;
+//     // move(player, 2, 0);
+//     sprite.velocity.x = -xHop;
+//   }
 }
 
 function move(sprite, speed, direction) {
