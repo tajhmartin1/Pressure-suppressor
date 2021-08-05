@@ -42,7 +42,7 @@ function preload() {
 
 function setup() {
   createCanvas(500, 500);
-  player = createSprite(80, 450, 50, 50);
+  player = createSprite(80, 450, 100, 100);
   player.shapeColor = 0;
   hits = 0;
   mic = new p5.AudioIn();
@@ -73,7 +73,7 @@ function setup() {
 
 function draw() {
   background(180, 210, 255);
-    gif.resize(200, 200);
+    gif.resize(100, 100);
 
   player.addImage("image", gif);
   bgx = bgx - bgaccX;
@@ -136,7 +136,7 @@ function moveSprite() {
 function jump(sprite) {
   sprite.velocity.y += yHop;
   //move(player, 2, 0);
-  sprite.velocity.x = xHop;
+//  sprite.velocity.x = xHop;
   console.log(sprite.velocity.y)
     console.log(sprite.velocity.x)
 
