@@ -2,9 +2,9 @@ let player, bottom, obstacle, bg, hit, rightSide, leftSide, vol;
 let topOfCanvas, gif;
 var song, mic, background;
 
-let gravity = 0.09;
-let yHop = -1;
-let xHop = 5;
+let gravity = 0.05;
+let yHop = -5;
+let xHop = 1;
 let bgx = 0;
 let bgy = 220;
 let bgw = 4000;
@@ -137,6 +137,7 @@ function jump(sprite) {
   sprite.velocity.y = yHop;
   // move(player, 2, 0);
   sprite.velocity.x = xHop;
+  console.log(sprite.velocity.y)
 
   if (sprite.collide(rightSide)) {
     // sprite.velocity.y = -yHop;
@@ -148,5 +149,5 @@ function jump(sprite) {
 function move(sprite, speed, direction) {
   sprite.setSpeed(speed, direction);
 }
-function collide() {}
-t
+// function collide() {}
+// t
