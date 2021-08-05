@@ -38,6 +38,8 @@ function preload() {
   gif = loadImage(
     "https://cdn.glitch.com/adc8477f-4903-4d87-8f47-16db8bf53b37%2FNew%20Piskel%20(1).gif?v=1628100776541"
   );
+  song = loadSound("https://cdn.glitch.com/9932e439-9de3-453d-989b-f4f396c9a943%2FMetre%20-%20Locus.mp3?v=1628099978842");
+
 }
 
 function setup() {
