@@ -42,7 +42,6 @@ function setup() {
   createCanvas(500, 500);
   player = createSprite(80, 400, 150, 150);
   player.shapeColor = 0;
-  hits = 0;
   song.play();
   book =
     "https://cdn.glitch.com/adc8477f-4903-4d87-8f47-16db8bf53b37%2Fadc8477f-4903-4d87-8f47-16db8bf53b37_New%20Piskel-1.png%20(4).png?v=1628102252590";
@@ -114,7 +113,6 @@ function draw() {
 
   player.velocity.y += gravity;
   drawSprites();
-  text(`Hits: ${hits}`, 20, 20);
   if (player.x > width) {
     player.velocity.x = 40;
   }
